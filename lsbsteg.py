@@ -23,7 +23,7 @@ def Encode(src, message, dest):
 
     total_pixels = array.size//n
 
-    message += "$t3g0"
+    message += "$$X$$"
     b_message = ''.join([format(ord(i), "08b") for i in message])
     req_pixels = len(b_message)
 
@@ -68,18 +68,18 @@ def Decode(src):
 
     message = ""
     for i in range(len(hidden_bits)):
-        if message[-5:] == "$t3g0":
+        if message[-5:] == "$$X$$":
             break
         else:
             message += chr(int(hidden_bits[i], 2))
-    if "$t3g0" in message:
+    if "$$X$$" in message:
         print("Hidden Message:", message[:-5])
     else:
         print("No Hidden Message Found")
 
 #main function
 def Stego():
-    print("--Welcome to $t3g0--")
+    print("--MENU--")
     print("1: Encode")
     print("2: Decode")
 
